@@ -10,5 +10,9 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  },
+  test: {
+    globals: true,
+    setupFiles: './setupTests.js', // jest-dom wants "expect" to be in global scope
+  },
 })
