@@ -1,11 +1,11 @@
-import {vi} from "vitest"
-import axiosMock from "axios"
-import { render, screen } from "@testing-library/vue"
+import {vi} from 'vitest'
+import axiosMock from 'axios'
+import { render, screen } from '@testing-library/vue'
 
-import { createRouter, createWebHistory } from "vue-router"
-import App from "../../App.vue"
-import Home from "../../views/HomeView.vue"
-import About from "../../views/AboutView.vue"
+import { createRouter, createWebHistory } from 'vue-router'
+import App from '../../App.vue'
+import Home from '../../views/HomeView.vue'
+import About from '../../views/AboutView.vue'
 
 vi.mock('axios')
 
@@ -42,6 +42,18 @@ test('it populate data to the app via ajax get request', async () => {
     axiosMock.get.mockResolvedValueOnce({
         data: {
             welcomeMsg: 'Welcome!',
+            shortDesc: 'To the tiny home of #unclexo',
+            links: [
+                {
+                    "title": "Twitter",
+                    "icon": "twitter",
+                    "url": "https://twitter.com/unclexo"
+                }, {
+                    "title": "LinkedIn",
+                    "icon": "linkedin",
+                    "url": "https://bd.linkedin.com/in/unclexo"
+                }
+            ]
         }
     })
 
@@ -52,6 +64,10 @@ test('it populate data to the app via ajax get request', async () => {
 
     expect(
         await screen.findByText('Welcome!')
+    ).toBeInTheDocument()
+
+    expect(
+        await screen.findByText('LinkedIn')
     ).toBeInTheDocument()
 })
 

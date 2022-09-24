@@ -3,9 +3,11 @@
     import { ref, onMounted } from 'vue'
     import { RouterLink, RouterView } from 'vue-router'
     import HelloWorld from './components/HelloWorld.vue'
+    import SocialMedia from './components/SocialMedia.vue'
 
     const welcomeMsg = ref('')
     const shortDesc = ref('')
+    const links = ref(null)
 
     onMounted(async () => {
         try {
@@ -13,6 +15,7 @@
             if (response && response.data) {
                 welcomeMsg.value = response.data.welcomeMsg
                 shortDesc.value = response.data.shortDesc
+                links.value = response.data.links
             }
         } catch (e) {
             console.log(e)
@@ -40,6 +43,8 @@
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+
+      <SocialMedia :links="links" />
     </div>
   </header>
 
