@@ -1,10 +1,30 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+    import axios from 'axios'
+    import { ref, onMounted } from 'vue'
+    import { RouterLink, RouterView } from 'vue-router'
+    import HelloWorld from './components/HelloWorld.vue'
+
+    const welcomeMsg = ref('')
+    const shortDesc = ref('')
+
+    onMounted(async () => {
+        try {
+            const response = await axios.get('https://raw.githubusercontent.com/unclexo/data/main/blog/index.json')
+            if (response && response.data) {
+                welcomeMsg.value = response.data.welcomeMsg
+                shortDesc.value = response.data.shortDesc
+            }
+        } catch (e) {
+            console.log(e)
+        }
+    })
 </script>
 
 <template>
-  <header class="header w-full lg:w-1/2 leading-normal lg:flex lg:items-center">
+  <header
+      data-test="header"
+      class="header w-full lg:w-1/2 leading-normal lg:flex lg:items-center"
+  >
     <img
         width="70"
         height="70"
@@ -14,7 +34,7 @@ import HelloWorld from './components/HelloWorld.vue'
     />
 
     <div class="wrapper w-full lg:flex lg:flex-col lg:items-start">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld :msg="welcomeMsg" :desc="shortDesc" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
