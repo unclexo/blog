@@ -1,11 +1,14 @@
-import { describe, it, expect } from 'vitest'
-
-import { mount } from '@vue/test-utils'
+import { render } from '@testing-library/vue'
 import HelloWorld from '../HelloWorld.vue'
 
-describe('HelloWorld', () => {
-  it('renders properly', () => {
-    const wrapper = mount(HelloWorld, { props: { msg: 'Hello Vitest' } })
-    expect(wrapper.text()).toContain('Hello Vitest')
+test('it renders properly', () => {
+  const { getByText } = render(HelloWorld, {
+    props: {
+      msg: 'Hello unclexo!',
+      desc: 'To the tiny home of #unclexo'
+    }
   })
+
+  expect(getByText('Hello unclexo!')).toBeInTheDocument()
+  expect(getByText('To the tiny home of #unclexo')).toBeInTheDocument()
 })
