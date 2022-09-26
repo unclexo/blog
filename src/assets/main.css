@@ -28,3 +28,7 @@ a,
     min-height: inherit;
   }
 }
+
+.page {
+  @apply bg-white rounded shadow p-5;
+}

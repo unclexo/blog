@@ -1,6 +1,6 @@
 <script setup>
     import axios from 'axios'
-    import { ref, onMounted } from 'vue'
+    import { ref, provide, onMounted } from 'vue'
     import { RouterLink, RouterView } from 'vue-router'
     import HelloWorld from './components/HelloWorld.vue'
     import SocialMedia from './components/SocialMedia.vue'
@@ -8,6 +8,9 @@
     const welcomeMsg = ref('')
     const shortDesc = ref('')
     const links = ref(null)
+    const articles = ref(null)
+
+    provide('articles', articles)
 
     onMounted(async () => {
         try {
@@ -16,6 +19,7 @@
                 welcomeMsg.value = response.data.welcomeMsg
                 shortDesc.value = response.data.shortDesc
                 links.value = response.data.links
+                articles.value = response.data.posts
             }
         } catch (e) {
             console.log(e)
@@ -25,15 +29,15 @@
 
 <template>
   <header
-      data-test="header"
-      class="header w-full lg:w-1/2 leading-normal lg:flex lg:items-center"
+    data-test="header"
+    class="header w-full lg:w-1/2 leading-normal lg:flex lg:items-center"
   >
     <img
-        width="70"
-        height="70"
-        src="@/assets/logo.svg"
-        alt="#unclexo's logo"
-        class="logo block mx-auto mb-10 lg:m-0 lg:mr-10"
+      width="70"
+      height="70"
+      src="@/assets/logo.svg"
+      alt="#unclexo's logo"
+      class="logo block mx-auto mb-10 lg:m-0 lg:mr-10"
     />
 
     <div class="wrapper w-full lg:flex lg:flex-col lg:items-start">

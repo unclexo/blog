@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+    import { inject } from 'vue'
+    import Articles from '../components/Articles.vue'
+
+    const articles = inject('articles', null)
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="page">
+    <Articles :articles="articles" />
+  </div>
 </template>
