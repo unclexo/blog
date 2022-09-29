@@ -19,7 +19,7 @@
                 welcomeMsg.value = response.data.welcomeMsg
                 shortDesc.value = response.data.shortDesc
                 links.value = response.data.links
-                articles.value = response.data.posts
+                articles.value = response.data.articles
             }
         } catch (e) {
             console.log(e)
