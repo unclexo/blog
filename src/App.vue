@@ -9,8 +9,10 @@
     const shortDesc = ref('')
     const links = ref(null)
     const articles = ref(null)
+    const contact = ref(null)
 
     provide('articles', articles)
+    provide('contact', contact)
 
     onMounted(async () => {
         try {
@@ -20,6 +22,7 @@
                 shortDesc.value = response.data.shortDesc
                 links.value = response.data.links
                 articles.value = response.data.articles
+                contact.value = response.data.contact
             }
         } catch (e) {
             console.log(e)
@@ -45,7 +48,9 @@
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/about">About me</RouterLink>
+        <a href="#">Download CV</a>
+        <RouterLink to="/contact">Contact</RouterLink>
       </nav>
 
       <SocialMedia :links="links" />

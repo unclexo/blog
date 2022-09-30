@@ -13,7 +13,7 @@
 </script>
 
 <template>
-  <div class="page flex items-center">
+  <div class="page flex items-center h-full">
     <div
         v-if="!store.content"
         data-test="about-spinner"
