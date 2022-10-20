@@ -37,7 +37,7 @@
     data-test="social-media-data"
     class="social-media-links flex flex-wrap lg:justify-start justify-center mt-10 lg:mb-0 mb-10"
   >
-    <SocialMedium v-for="link in links" :link="link.url">
+    <SocialMedium :key="index" v-for="(link, index) in links" :link="link.url">
       <template #icon>
         <component :is="components[link.icon]"></component>
       </template>

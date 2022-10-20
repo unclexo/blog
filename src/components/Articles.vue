@@ -24,7 +24,7 @@
     data-test="articles-data" class="articles"
   >
     <h2 class="text-lg mb-3">Latest Articles</h2>
-    <Article v-for="article in articles" :url="article.url">
+    <Article :key="index" v-for="(article, index) in articles" :url="article.url">
       <template #title>{{ article.title }}</template>
       <p>{{ article.description }}</p>
     </Article>
