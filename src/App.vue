@@ -48,8 +48,8 @@
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About me</RouterLink>
-        <a href="#">Download CV</a>
+        <RouterLink to="/about">About</RouterLink>
+        <a href="https://github.com/unclexo/cv/blob/main/abu-jobaer-resume.pdf" target="_blank">Curriculum vitae</a>
         <RouterLink to="/contact">Contact</RouterLink>
       </nav>
 
@@ -81,6 +81,7 @@
   nav a {
     display: inline-block;
     padding: 0 1rem;
+    margin-bottom: 0.555rem;
     border-left: 1px solid var(--color-border);
   }
 
